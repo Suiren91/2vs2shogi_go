@@ -5,6 +5,8 @@ import (
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/Suiren91/2vs2shogi_go/internal/ws"
 )
 
 type healthResponse struct {
@@ -27,6 +29,7 @@ func healthHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /health", healthHandler)
+	mux.HandleFunc("GET /ws", ws.Handler)
 
 	srv := &http.Server{
 		Addr:              ":8080",
