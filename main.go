@@ -37,5 +37,4 @@ func main() {
 		ReadHeaderTimeout: 5 * time.Second,
 	}
 	log.Fatal(srv.ListenAndServe())
-	return
 }
