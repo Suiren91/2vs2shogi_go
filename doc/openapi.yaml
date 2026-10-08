@@ -1,0 +1,30 @@
+openapi: 3.1.1
+info:
+  title: 2vs2shogi_api
+  version: 0.2.0
+
+servers:
+  - url: http://localhost:8080
+    name: dev
+paths:
+  /health:
+    get:
+      operationId: healthCheck
+      summary: システムの稼働状況を確認する
+      responses: 
+        '200':
+          description: 稼働中
+        '500':
+          description: サーバーエラー
+  /join:
+    get:
+      operationId: joinRoom
+      summary: ゲームの待機室に入る
+      description: WebSocket接続し，待機室に入りマッチングを待つ
+      responses:
+      '101':
+        description: WebSocket接続に移行
+      '400':
+        description: 不正なリクエストによるハンドシェイク失敗
+      '426':
+        description: WebSocket以外からのアクセス
